@@ -1,9 +1,6 @@
 #!/bin/sh
 
 
-# Arthur?
-# rm -Rf /opt/tomcat/database/blazegraph.jnl
-
 curl \
           --data-urlencode "file=/usr/local/tomcat/backup.jnl" \
           --data-urlencode "compress=true" \

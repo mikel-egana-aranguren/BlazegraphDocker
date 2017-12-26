@@ -1,11 +1,9 @@
 #!/bin/sh
 
-rm -Rf /usr/local/tomcat/backup.jnl
+rm -Rf /usr/local/data/backup.jnl
 curl \
-          --data-urlencode "file=/usr/local/tomcat/backup.jnl" \
+          --data-urlencode "file=/usr/local/data/backup.jnl" \
           --data-urlencode "compress=true" \
           --data-urlencode "block=true" \
           http://localhost:8080/blazegraph/backup  
 
-# todo!
-# cp /usr/local/tomcat/backup.jnl /path of shared volume

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-
+rm -Rf /usr/local/tomcat/backup.jnl
 curl \
           --data-urlencode "file=/usr/local/tomcat/backup.jnl" \
           --data-urlencode "compress=true" \

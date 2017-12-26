@@ -1,2 +1,0 @@
-* * * * * /usr/local/tomcat/backup.sh  2>&1|tee -a /usr/local/data/backup.log
-

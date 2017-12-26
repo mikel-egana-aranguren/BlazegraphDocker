@@ -1,4 +1,2 @@
-root@blaze2 ~]# crontab -l
-00 * * * * /opt/lod/scripts/backup.sh 2>&1|tee -a /datos/lod/log/migracion/backup.log
-10 * * * * /opt/lod/scripts/actualizarquery_11.sh
-20 * * * * /opt/lod/scripts/actualizarquery_12.sh
+* * * * * /usr/local/tomcat/backup.sh  2>&1|tee -a /usr/local/data/backup.log
+

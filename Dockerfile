@@ -2,7 +2,7 @@ FROM tomcat:8.0.20-jre8
 MAINTAINER Mikel Egaña Aranguren <mikel.egana.aranguren@gmail.com>
 
 RUN sed -i s/sid/stretch/ /etc/apt/sources.list
-RUN apt-get update && apt-get install vim man cron
+RUN apt-get update && apt-get install -y vim man cron
 
 COPY backup.sh /usr/local/tomcat/
 RUN chmod +x /usr/local/tomcat/backup.sh

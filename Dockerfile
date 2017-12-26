@@ -1,6 +1,8 @@
 FROM tomcat:8.0.20-jre8
 MAINTAINER Mikel Egaña Aranguren <mikel.egana.aranguren@gmail.com>
 
+RUN mkdir -p /opt/tomcat/database
+
 COPY backup.sh /usr/local/tomcat/
 RUN chmod +x /usr/local/tomcat/backup.sh
 

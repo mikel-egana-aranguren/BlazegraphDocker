@@ -4,8 +4,11 @@ MAINTAINER Mikel Egaña Aranguren <mikel.egana.aranguren@gmail.com>
 RUN sed -i s/sid/stretch/ /etc/apt/sources.list
 RUN apt-get update && apt-get install -y vim man cron
 
-COPY loadblazegraph.sh /usr/local/tomcat/
-RUN chmod +x /usr/local/tomcat/loadblazegraph.sh
+COPY loadblazegraph.sh /root/
+RUN chmod +x /root/loadblazegraph.sh
+
+COPY initblazegraph.sh /root/
+RUN chmod +x /root/initblazegraph.sh
 
 RUN sed -i '$d' /etc/crontab
 RUN echo "10 * * * * root /usr/local/tomcat/backup.sh 2>&1|tee -a /usr/local/data/backup.log" >> /etc/crontab

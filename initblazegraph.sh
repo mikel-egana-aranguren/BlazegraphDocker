@@ -20,12 +20,12 @@
 ## END INIT INFO
 
 # Source function library.
-. /etc/init.d/functions
+#. /etc/init.d/functions
 
 ## tomcat installation directory
-PROCESS_NAME=loadblazegraph
+PROCESS_NAME=initblazegraph
 
-CATALINA_HOME="/usr/local/tomcat"
+CATALINA_HOME="/opt/apache-tomcat-8.0.48"
 
 ## run as a diffent user
 TOMCAT_USER=root

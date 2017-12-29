@@ -1,17 +1,25 @@
-FROM tomcat:8.0.20-jre8
+# https://github.com/mikel-egana-aranguren/BlazegraphDocker/blob/READONLY-WAR-BLAZEGRAPH_RELEASE_2_1_4/Dockerfile
+
+FROM mlaccetti/docker-oracle-java8-ubuntu-16.04
 MAINTAINER Mikel Egaña Aranguren <mikel.egana.aranguren@gmail.com>
 
-RUN sed -i s/sid/stretch/ /etc/apt/sources.list
-RUN apt-get update && apt-get install -y vim man cron
+RUN apt-get update && apt-get install -y cron
 
-COPY loadblazegraph.sh /root/
-RUN chmod +x /root/loadblazegraph.sh
+RUN mkdir /opt/lod/scripts
 
-COPY initblazegraph.sh /root/
-RUN chmod +x /root/initblazegraph.sh
+COPY loadblazegraph.sh /opt/lod/scripts
+RUN chmod +x /opt/lod/scripts/loadblazegraph.sh
 
-RUN sed -i '$d' /etc/crontab
-RUN echo "10 * * * * root /usr/local/tomcat/backup.sh 2>&1|tee -a /usr/local/data/backup.log" >> /etc/crontab
+COPY initblazegraph.sh /opt/lod/scripts
+RUN chmod +x /opt/lod/scripts/initblazegraph.sh
 
+COPY cronblzgbackup /etc/cron.d/cronblzgbackup
+RUN chmod a-w /etc/cron.d/cronblzgbackup
+RUN cron -f &
 
-COPY blazegraph-war/target/blazegraph-war-2.1.4.war /usr/local/tomcat/webapps/blazegraph.war
+WORKDIR /opt
+RUN wget http://ftp.cixug.es/apache/tomcat/tomcat-8/v8.0.48/bin/apache-tomcat-8.0.48.tar.gz
+RUN tar -xvzf apache-tomcat-8.0.48.tar.gz
+COPY blazegraph-war/target/blazegraph-war-2.1.4.war /opt/apache-tomcat-8.0.48/webapps/blazegraph.war
+EXPOSE 8080
+CMD apache-tomcat-8.0.48/bin/catalina.sh run

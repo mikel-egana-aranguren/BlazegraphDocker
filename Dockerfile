@@ -5,7 +5,7 @@ MAINTAINER Mikel Egaña Aranguren <mikel.egana.aranguren@gmail.com>
 
 RUN apt-get update && apt-get install -y cron
 
-RUN mkdir /opt/lod/scripts
+RUN mkdir -p /opt/lod/scripts
 
 COPY loadblazegraph.sh /opt/lod/scripts
 RUN chmod +x /opt/lod/scripts/loadblazegraph.sh

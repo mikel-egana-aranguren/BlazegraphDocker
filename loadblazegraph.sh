@@ -3,5 +3,5 @@
 #alias cp=cp
 /opt/lod/scripts/initblazegraph.sh stop
 sleep 10
-cp -rf /datos/lod/backup/blazegraph.jnl /datos/lod/blazegraph_query_11/blazegraph.jnl
+cp -rf /usr/local/data/backup.jnl /opt/blazegraph.jnl
 /opt/lod/scripts/initblazegraph.sh start

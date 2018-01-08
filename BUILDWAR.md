@@ -7,7 +7,7 @@ Change:
 
 Adding to both: 
 
-`com.bigdata.journal.AbstractJournal.file=/opt/tomcat/database/blazegraph.jnl`
+`com.bigdata.journal.AbstractJournal.file=/opt/blazegraph.jnl`
 
 Set readOnly to true at `/bigdata-war-html/src/main/webapp/WEB-INF/web.xml`: 
 

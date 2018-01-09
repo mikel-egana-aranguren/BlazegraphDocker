@@ -3,19 +3,15 @@
 FROM mlaccetti/docker-oracle-java8-ubuntu-16.04
 MAINTAINER Mikel Egaña Aranguren <mikel.egana.aranguren@gmail.com>
 
-RUN apt-get update && apt-get install -y cron vim less net-tools
+RUN apt-get update && apt-get install -y cron
 
 RUN mkdir -p /opt/lod/scripts
 
 COPY loadblazegraph.sh /opt/lod/scripts
 RUN chmod +x /opt/lod/scripts/loadblazegraph.sh
 
-COPY initblazegraph.sh /opt/lod/scripts
-RUN chmod +x /opt/lod/scripts/initblazegraph.sh
-
-#COPY cronblzgbackup /etc/cron.d/cronblzgbackup
-#RUN chmod a-w /etc/cron.d/cronblzgbackup
-#RUN cron -f &
+COPY cronblzgbackup /etc/cron.d/cronblzgbackup
+RUN chmod a-w /etc/cron.d/cronblzgbackup
 
 WORKDIR /opt
 RUN wget http://ftp.cixug.es/apache/tomcat/tomcat-8/v8.0.48/bin/apache-tomcat-8.0.48.tar.gz

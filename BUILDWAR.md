@@ -7,17 +7,7 @@ Change:
 
 Adding to both: 
 
-`com.bigdata.journal.AbstractJournal.file=/opt/tomcat/database/blazegraph.jnl`
-
-Set readOnly to true at `/bigdata-war-html/src/main/webapp/WEB-INF/web.xml`: 
-
-```
-  <context-param>
-   <description>When true, the REST API will not permit mutation operations.</description>
-   <param-name>readOnly</param-name>
-   <param-value>true</param-value>
-  </context-param>
-```
+`com.bigdata.journal.AbstractJournal.file=/opt/blazegraph.jnl`
    
 Run as maven install in this order:
 1. `/bigdata-war-html/pom.xml`

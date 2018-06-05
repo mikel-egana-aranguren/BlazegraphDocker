@@ -1,0 +1,6 @@
+blzg-read:
+  build: .
+  ports:
+    - "8082:8080"
+  volumes:
+    - ./lod/data:/usr/local/data

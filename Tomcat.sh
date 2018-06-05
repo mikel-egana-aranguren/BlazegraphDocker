@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cron -f &
+# cron -f &
 /opt/apache-tomcat-8.0.50/bin/catalina.sh run
 sleep infinity 
 
